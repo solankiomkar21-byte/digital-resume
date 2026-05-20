@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Solanki | Digital Resume & Portfolio</title>
+    <style>
+        :root {
+            --primary: #0f172a; /* Sleek Dark Slate */
+            --accent: #2563eb;  /* Professional Royal Blue */
+            --text: #334155;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Section with Profile Photo */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-photo-container {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            background: #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text {
+            flex-grow: 1;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .header-links {
+            margin-top: 10px;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #0077b5;
+            color: white;
+            text-decoration: none;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .linkedin-btn:hover {
+            background: #005582;
+        }
+
+        .summary {
+            font-size: 1rem;
+            color: var(--text);
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Layout Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Experience & Education Timelines */
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .item-sub {
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Badges & Tags */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #eff6ff;
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+        }
+
+        /* FEATURED MEDIA & PORTFOLIO SHOWCASE */
+        .media-showcase {
+            grid-column: 1 / -1; 
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .media-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-img-container {
+            width: 100%;
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .media-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-body {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .media-body h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .media-body p {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 12px;
+            min-height: 54px;
+        }
+
+        .media-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .media-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="profile-photo-container">
+            <img src="C:\Users\solan\Downloads\Omkar Solanki.PNG" alt="Omkar Solanki" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'">
+        </div>
+        <div class="header-text">
+            <h1>Omkar Solanki</h1>
+            <p>MBA Candidate | Marketing & Brand Management</p>
+            <p class="summary">
+                MBA candidate with a strong interest in Marketing and Brand Management. Hands-on experience as a Manager strengthened practical skills in inventory handling, store coordination, and workflow efficiency. Motivated to solve market challenges, enhance brand positioning, and drive consistent revenue growth. Seeking to apply an analytical mind-set, leadership abilities, and a consumer-centric approach to contribute to high-impact marketing strategies and scalable brand presence within an organization.
+            </p>
+            <div class="header-links">
+                <a href="https://www.linkedin.com/in/omkar-solanki-742818384?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="linkedin-btn">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="grid">
+        
+        <main>
+            <section>
+                <h2>Work Experience / Internship / Live Projects</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span>Store Manager</span>
+                        <span>Dec 2022 - May 2025 (2 years)</span>
+                    </div>
+                    <div class="item-sub">
+                        <span>Smarty Brothers</span>
+                        <span>Rajasthan</span>
+                    </div>
+                    <ul>
+                        <li>Managed daily store operations and supervised a team of 10 staff members.</li>
+                        <li>Oversaw sales performance and ensured targets were met.</li>
+                        <li>Handled inventory management, including stock monitoring and ordering.</li>
+                        <li>Managed store finances and staff salaries, ensuring accurate records and timely payments.</li>
+                        <li>Maintained customer and supplier relationships to support smooth business operations.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span>Physical Stock Auditor</span>
+                        <span></span>
+                    </div>
+                    <div class="item-sub">
+                        <span>KD Consultant</span>
+                        <span></span>
+                    </div>
+                    <ul>
+                        <li>Conducted regular stock auditing to ensure inventory accuracy.</li>
+                        <li>Performed stock reconciliation to match physical inventory with system records.</li>
+                    </ul>
+                </div>
+
+                <div class="item" style="margin-top: 25px;">
+                    <div class="item-header" style="color: var(--accent); font-size: 1rem;">
+                        <span>Academic Live Projects & Institutional Collaborations</span>
+                    </div>
+                    <ul style="margin-top: 8px;">
+                        <li><strong>Project Friday (Atharva University):</strong> Bridged corporate leaders and universities to enable seamless industry engagement.</li>
+                        <li><strong>Active Strategic Frameworks:</strong> Developing operational blueprints for <em>Pay Orbit</em> (Payment Tracking Project), <em>Mithi River</em> (social project), <em>Aamchi Mumbai</em> (social project), and <em>Dhan Manch</em> (financial gaming).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Education</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span>Atharva University</span>
+                        <span>Pursuing – 2027</span>
+                    </div>
+                    <div class="item-sub">
+                        <span>MBA - Marketing</span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span>Mohan Lal University</span>
+                        <span>2021 – 2024</span>
+                    </div>
+                    <div class="item-sub">
+                        <span>Graduation</span>
+                        <span>66%</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span>NIOS</span>
+                        <span>2019 – 2021</span>
+                    </div>
+                    <div class="item-sub">
+                        <span>XII th</span>
+                        <span>75%</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span>St. John’s High School</span>
+                        <span>2018 – 2019</span>
+                    </div>
+                    <div class="item-sub">
+                        <span>X th</span>
+                        <span>60%</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Certificates</h2>
+                <div class="badge-container">
+                    <div class="badge">Generative AI Masterclass</div>
+                    <div class="badge">ESG Essentials - Duke Univ.</div>
+                    <div class="badge">Intro to AI - IBM</div>
+                    <div class="badge">Design Thinking - Humane Design</div>
+                    <div class="badge">Advance Excel - Ravison</div>
+                    <div class="badge">Self-Assessment - UC Davis</div>
+                    <div class="badge">Business Innovation - Coursera</div>
+                    <div class="badge">Research Paper - Atharva Univ.</div>
+                </div>
+            </section>
+        </main>
+
+        <aside>
+            <section>
+                <h2>Skills</h2>
+                <div style="margin-bottom: 20px;">
+                    <strong style="font-size: 0.95rem; color: var(--primary); display: block; margin-bottom: 8px;">Technical & Tools:</strong>
+                    <div class="badge-container">
+                        <div class="badge">Vibe Coding</div>
+                        <div class="badge">Word</div>
+                        <div class="badge">Excel</div>
+                        <div class="badge">PowerPoint</div>
+                        <div class="badge">MS OFFICE</div>
+                    </div>
+                </div>
+                <div>
+                    <strong style="font-size: 0.95rem; color: var(--primary); display: block; margin-bottom: 8px;">Core Competencies:</strong>
+                    <div class="badge-container">
+                        <div class="badge">Market Research</div>
+                        <div class="badge">Data Insights</div>
+                        <div class="badge">Negotiation</div>
+                        <div class="badge">Team Dynamics</div>
+                        <div class="badge">Problem Solving</div>
+                        <div class="badge">Adaptability</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Leadership & Achievements</h2>
+                <ul style="padding-left: 15px; list-style-type: square;">
+                    <li style="margin-bottom: 12px;"><strong>Model Senate 2026:</strong> Achieved 1st place across Atharva University through advanced strategic dialogue and crisis negotiation representing Mahindra & Mahindra.</li>
+                    <li style="margin-bottom: 12px;"><strong>Joint Secretary, Student Council:</strong> Leading a multi-functional team to execute university events and streamline student-faculty communication.</li>
+                    <li style="margin-bottom: 12px;"><strong>Head of Placement Cell:</strong> Led the university placement committee, acting as a key liaison between corporate recruiters and students.</li>
+                    <li style="margin-bottom: 12px;">Presented at International Research Conference, Atharva University.</li>
+                    <li style="margin-bottom: 12px;"><strong>Volunteer:</strong> Production Head & Sound PUC, Under25 Event.</li>
+                    <li style="margin-bottom: 12px;">District Level Basketball.</li>
+                    <li style="margin-bottom: 12px;">District Level Table tennis.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Hobbies</h2>
+                <div class="badge-container">
+                    <div class="badge">Solo traveling</div>
+                    <div class="badge">Writing</div>
+                </div>
+            </section>
+        </aside>
+
+        <section class="media-showcase">
+            <h2>Interactive Portfolio & Features</h2>
+            <p style="margin-bottom: 20px; font-size: 0.95rem;">A visual timeline of my active leadership, live social projects, and media engagements.</p>
+            
+            <div class="media-grid">
+                
+                <div class="media-card">
+                    <div class="media-img-container">
+                        <img src="student_council_poster.jpg" alt="Student Council Joint Secretary Poster" onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="media-body">
+                        <div>
+                            <h4>Student Council Feature</h4>
+                            <p>Official executive appointment poster presenting me as the Joint Secretary for Atharva University's School of Business Management Student Council.</p>
+                        </div>
+                        <a href="https://www.instagram.com/p/DWx33h2kkmB/?igsh=MXNjZ3NhaWJrd2JxZw==" target="_blank" class="media-btn">View Instagram Post</a>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-img-container">
+                        <img src="podcast_cover.jpg" alt="University Podcast Reel" onerror="this.src='https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="media-body">
+                        <div>
+                            <h4>University Featured Podcast</h4>
+                            <p>My personal podcast episode hosted and featured live on the official university Instagram platform.</p>
+                        </div>
+                        <a href="https://www.instagram.com/reel/DODLnWriu9J/?igsh=MWQ2M2V1eWhvcjd4dQ==" target="_blank" class="media-btn">Watch Reel on Instagram</a>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-img-container">
+                        <img src="project_portfolio_preview.jpg" alt="Project Portfolio Work" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="media-body">
+                        <div>
+                            <h4>Project Portfolio</h4>
+                            <p>Comprehensive folder containing documentation, screenshots, and business plans for Pay Orbit, Model Senate modules, and live corporate collaborations.</p>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1HTUfCWBzt4EMkKMWLUkJRseo9194D-Eh?usp=sharing" target="_blank" class="media-btn" style="background:#0f172a;">Open Project Drive Folder</a>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="media-img-container">
+                        <img src="certificates_preview.jpg" alt="Certificates Portfolio" onerror="this.src='https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="media-body">
+                        <div>
+                            <h4>Professional Credentials</h4>
+                            <p>Verified repository of my professional certifications from institutions like Duke University, IBM, UC Davis, and Humane Design.</p>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1qVP0qDuGqlV1ZDM3ysoQwUMiXRfHvOD0?usp=sharing" target="_blank" class="media-btn" style="background:#2563eb;">Verify Certificates</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</div>
+
+</body>
+</html>
